@@ -15,7 +15,8 @@ class AbsTest {
 
 	@Test
 	void test() {
-		Function f1 = Sum.of(X.x(),X.x());
+		//Function f1 = Sum.of(X.x(),X.x());
+		//
 	}
 
 }
