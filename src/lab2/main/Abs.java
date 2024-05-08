@@ -10,12 +10,6 @@ public class Abs extends Nested {
     	super(InnerF);
     }
     
-    @Override
-    public boolean equals(Function f) {
-    	Abs f1 = (Abs) f;
-        return (InnerF.equals(f1.InnerF));
-    }
-    
     @Override 
     public double calculate(double x) { 
         return abs(InnerF.calculate(x)); 

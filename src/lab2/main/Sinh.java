@@ -3,13 +3,10 @@ package lab2.main;
 import java.text.NumberFormat;
 import static java.lang.Math.*;
 
-public class Sinh implements Function { 
-    public static final Const ZERO = new Const(0); 
-
-    private final Function InnerF; 
+public class Sinh extends Nested {
 
     public Sinh(Function InnerF) { 
-        this.InnerF = InnerF;
+    	super(InnerF);
     } 
     @Override
     public boolean equals(Function f) {
