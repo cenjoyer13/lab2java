@@ -15,6 +15,8 @@ public class FindDerivative {
 				X.x(),Exponential.of(Cos.of(Exponential.of(Abs.of(Sum.of(Multiplication.of(Const.of(a),X.x()), Const.of(b))), 3)), 2));
 		final Function expression1 = Sum.of(Multiplication.of(Exponential.of(
 				Sinh.of(X.x()),3), Const.of(b)), Multiplication.of(Const.of(-1),Abs.of(Cosh.of(Exponential.of(Sum.of(X.x(), Const.of(a)), 2.5)))));
+		
+		
 
 		final NumberFormat nf = NumberFormat.getInstance();
 		
@@ -49,6 +51,11 @@ public class FindDerivative {
 		Function f1 = Exponential.of(X.x(), 2);
 		System.out.format("f2'= %s", f1.equals(Exponential.of(X.x(), 2))
 		).println();
+		
+		Function test = Sum.of(Const.of(1),X.x());
+		System.out.format("f1(x) = %s", 
+		        test.toPrettyString(nf)
+		).println(); 
 	}
 
 }

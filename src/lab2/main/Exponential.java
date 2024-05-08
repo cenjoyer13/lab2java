@@ -15,8 +15,11 @@ public class Exponential implements Function {
     
     @Override
     public boolean equals(Function f) {
-    	Exponential f1 = (Exponential) f;
-        return (InnerF.equals(f1.InnerF) && (this.power == f1.power));
+    	if (this.getClass() == f.getClass()) {
+    		Exponential f1 = (Exponential) f;
+    		return (InnerF.equals(f1.InnerF) && (this.power == f1.power));
+    	}
+    	else return false;
     }
     @Override 
     public double calculate(double x) { 
