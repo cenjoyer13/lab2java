@@ -2,6 +2,7 @@ package lab2.FX;
 
 import lab2.main.*;
 
+import java.net.URL;
 import java.text.NumberFormat;
 
 import javafx.event.ActionEvent;
@@ -45,7 +46,7 @@ public class Controller {
 
     @FXML
     public void Select(ActionEvent actionEvent) {
-    	if ("rb1" == ((Node) toggleGroup.getSelectedToggle()).getId()) inUse=expression1;
+    	if (rb1 == toggleGroup.getSelectedToggle()) inUse=expression1;
     	else inUse=expression2;
     }
 

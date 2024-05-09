@@ -31,8 +31,8 @@
          <children>
             <Group layoutX="28.0" layoutY="26.0">
                <children>
-                  <RadioButton fx:id="rb1" mnemonicParsing="false" prefHeight="30.0" prefWidth="299.0" selected="true" text="f1(x) = sinh(x)^3*0,3)+(-1*|cosh((x-0,7)^2,5)|" />
-                  <RadioButton fx:id="rb2" layoutY="30.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="251.0" text="f2(x) = x*cos(|((-0,7*x)+0,3)|^3)^2" />
+                  <RadioButton id="rb1" fx:id="rb1" mnemonicParsing="false" prefHeight="30.0" prefWidth="299.0" selected="true" text="f1(x) = sinh(x)^3*0,3)+(-1*|cosh((x-0,7)^2,5)|" />
+                  <RadioButton id="rb1" fx:id="rb2" layoutY="30.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="251.0" text="f2(x) = x*cos(|((-0,7*x)+0,3)|^3)^2" />
                </children>
             </Group>
             <VBox layoutX="28.0" layoutY="349.0" prefHeight="200.0" prefWidth="204.0">
@@ -58,7 +58,7 @@
                      </font>
                   </Button>
                </children></VBox>
-            <Button layoutX="28.0" layoutY="99.0" mnemonicParsing="false" onAction="#Select" prefHeight="40.0" prefWidth="131.0" text="ОБРАТИ">
+            <Button layoutX="28.0" layoutY="101.0" mnemonicParsing="false" onAction="#Select" prefHeight="40.0" prefWidth="131.0" text="ОБРАТИ">
                <font>
                   <Font name="Comic Sans MS" size="14.0" />
                </font>

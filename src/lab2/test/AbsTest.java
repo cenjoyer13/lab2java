@@ -1,8 +1,8 @@
 package lab2.test;
 
 import static org.junit.Assert.*;
-import java.text.NumberFormat;
 import org.junit.Test;
+import java.text.NumberFormat;
 import lab2.main.*;
 
 public class AbsTest {

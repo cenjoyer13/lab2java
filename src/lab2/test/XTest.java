@@ -1,15 +1,9 @@
 package lab2.test;
 
-import static java.lang.Math.*;
-import static org.junit.jupiter.api.Assertions.*;
-
+import static org.junit.Assert.*;
+import org.junit.Test;
 import java.text.NumberFormat;
-
-import org.junit.jupiter.api.Test;
-
 import lab2.main.*;
-
-import org.junit.jupiter.api.Test;
 
 class XTest {
 
@@ -18,13 +12,13 @@ class XTest {
 		Function f = X.x();
 		assertTrue(f.calculate(-2) == -2);
 	}
-	
+
 	@Test
 	void CalculateSimple2(){
 		Function f = X.x();
 		assertTrue(f.calculate(100) == 100);
 	}
-	
+
 	@Test
 	void DeriviateSimple(){
 		Function f = X.x();
@@ -32,7 +26,7 @@ class XTest {
 		assertTrue(f.derivative().equals(fder));
 	}
 
-	
+
 	@Test
 	void StringSimple(){
 		final NumberFormat nf = NumberFormat.getInstance();
