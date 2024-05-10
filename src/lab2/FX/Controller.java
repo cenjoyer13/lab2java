@@ -32,9 +32,11 @@ public class Controller {
 
     public Label calc;
     public Label der;
+    public Label current;
     public TextField Xin;
     public TextField start;
     public TextField fin;
+    final NumberFormat nf = NumberFormat.getInstance();
 
     @FXML
     public void initialize() {
@@ -42,24 +44,28 @@ public class Controller {
        rb1.setToggleGroup(toggleGroup);
        rb2.setToggleGroup(toggleGroup);
        inUse=expression1;
+       current.setText("y = " + inUse.toPrettyString(nf));
     }
 
     @FXML
     public void Select(ActionEvent actionEvent) {
     	if (rb1 == toggleGroup.getSelectedToggle()) inUse=expression1;
     	else inUse=expression2;
+    	current.setText("y = " + inUse.toPrettyString(nf));
     }
 
     @FXML
     public void Calculate(ActionEvent actionEvent) {
     	x = Double.parseDouble(Xin.getText());
     	calc.setText("f(" + x + "): " + inUse.calculate(x));
+    	x = Double.parseDouble(Xin.getText());
+    	der.setText("f`(" + x + "): " + inUse.derivative().calculate(x));
     }
 
     @FXML
     public void Derivative(ActionEvent actionEvent) {
-    	x = Double.parseDouble(Xin.getText());
-    	der.setText("f`(" + x + "): " + inUse.derivative().calculate(x));
+    	inUse = inUse.derivative();
+    	current.setText("y = " + inUse.derivative().toPrettyString(nf));
     }
 
 
@@ -81,9 +87,9 @@ public class Controller {
             final double y = inUse.calculate(x);
             final double y1 = inUse.derivative().calculate(x);
             final double y2 = inUse.derivative().derivative().calculate(x);
-            series.getData().add(new XYChart.Data<>(String.format("%.2f", x), y));
-            series1.getData().add(new XYChart.Data<>(String.format("%.2f", x), y1));
-            series2.getData().add(new XYChart.Data<>(String.format("%.2f", x), y2));
+            if (!Double.isNaN(y)) series.getData().add(new XYChart.Data<>(String.format("%.2f", x), y));
+            if (!Double.isNaN(y1)) series1.getData().add(new XYChart.Data<>(String.format("%.2f", x), y1));
+            if (!Double.isNaN(y2)) series2.getData().add(new XYChart.Data<>(String.format("%.2f", x), y2));
         }
         chart.setCreateSymbols(false); // remove all dots
         chart.getData().clear();

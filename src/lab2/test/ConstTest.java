@@ -5,22 +5,22 @@ import org.junit.Test;
 import java.text.NumberFormat;
 import lab2.main.*;
 
-class ConstTest {
+public class ConstTest {
 
 	@Test
-	void CalculateSimple(){
+	public void CalculateSimple(){
 		Function f = Const.of(2);
 		assertTrue(f.calculate(-2) == 2);
 	}
 
 	@Test
-	void CalculateSimple2(){
+	public void CalculateSimple2(){
 		Function f = Const.of(2);
 		assertTrue(f.calculate(100) == 2);
 	}
 
 	@Test
-	void DeriviateSimple(){
+	public void DeriviateSimple(){
 		Function f = Const.of(2);
 		Function fder = Const.ZERO;
 		assertTrue(f.derivative().equals(fder));
@@ -28,7 +28,7 @@ class ConstTest {
 
 
 	@Test
-	void StringSimple(){
+	public void StringSimple(){
 		final NumberFormat nf = NumberFormat.getInstance();
 		Function f = Const.of(2);
 		assertTrue(f.toPrettyString(nf).equals("2"));

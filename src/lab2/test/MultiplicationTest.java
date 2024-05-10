@@ -5,48 +5,48 @@ import org.junit.Test;
 import java.text.NumberFormat;
 import lab2.main.*;
 
-class MultiplicationTest {
+public class MultiplicationTest {
 
 	@Test
-	void EqualsDifClassTest() {
+	public void EqualsDifClassTest() {
 		Function f1 = Sum.of(X.x(),X.x());
 		Function f2 = Multiplication.of(X.x(),X.x());
 		assertFalse(f1.equals(f2));
 	}
 	@Test
-	void EqualsDifFunctions() {
+	public void EqualsDifFunctions() {
 		Function f1 = Multiplication.of(X.x(),X.x());
 		Function f2 = Multiplication.of(Const.of(1),X.x());
 		assertFalse(f1.equals(f2));
 	}
 	@Test
-	void EqualsSimilarFunctions() {
+	public void EqualsSimilarFunctions() {
 		Function f1 = Multiplication.of(Const.of(1),X.x(),Cos.of(X.x()));
 		Function f2 = Multiplication.of(X.x(),Cos.of(X.x()),Const.of(1));
 		assertTrue(f1.equals(f2));
 	}
 
 	@Test
-	void CalculateSimple(){
+	public void CalculateSimple(){
 		Function f = Multiplication.of(Const.of(1),X.x());
 		assertTrue(f.calculate(2)==2);
 	}
 
 	@Test
-	void CalculateComplex(){
+	public void CalculateComplex(){
 		Function f = Multiplication.of(Const.of(1),X.x(),Abs.of(X.x()));
 		assertTrue(f.calculate(-1)==-1);
 	}
 
 	@Test
-	void DeriviateSimple(){
+	public void DeriviateSimple(){
 		Function f = Multiplication.of(Const.of(1),X.x());
 		Function fder = Sum.of(Multiplication.of(Const.of(1),Const.of(1)));
 		assertTrue(f.derivative().equals(fder));
 	}
 
 	@Test
-	void DeriviateComplex(){
+	public void DeriviateComplex(){
 		Function f = Multiplication.of(X.x(),Exponential.of(X.x(), 2));
 		Function fder = Sum.of(
 
@@ -65,16 +65,23 @@ class MultiplicationTest {
 						Const.of(1)));
 		assertTrue(f.derivative().equals(fder));
 	}
+	
+	@Test
+	public void Simlify(){
+		Function f = Multiplication.of(Const.of(1));
+		Function fder = Const.of(0);
+		assertTrue(f.derivative().equals(fder));
+	}
 
 	@Test
-	void StringSimple(){
+	public void StringSimple(){
 		final NumberFormat nf = NumberFormat.getInstance();
 		Function f = Multiplication.of(Const.of(1),X.x());
 		assertTrue(f.toPrettyString(nf).equals("(1*x)"));
 	}
 
 	@Test
-	void StringComplex(){
+	public void StringComplex(){
 		final NumberFormat nf = NumberFormat.getInstance();
 		Function f = Multiplication.of(X.x(),Exponential.of(X.x(), 2));
 		assertTrue(f.toPrettyString(nf).equals("(x*x^2)"));
