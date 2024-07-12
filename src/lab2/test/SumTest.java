@@ -41,20 +41,20 @@ public class SumTest {
 	@Test
 	public void DeriviateSimple(){
 		Function f = Sum.of(Const.of(1),X.x());
-		Function fder = Sum.of(Const.of(1));
+		Function fder = Const.of(1);
 		assertTrue(f.derivative().equals(fder));
 	}
 
 	@Test
 	public void DeriviateComplex(){
 		Function f = Sum.of(X.x(),Exponential.of(X.x(), 2));
-		Function fder = Sum.of(Const.of(1),Multiplication.of(Const.of(2),X.x(),Const.of(1)));
+		Function fder = Sum.of(Const.of(1),Multiplication.of(Const.of(2),X.x()));
 		assertTrue(f.derivative().equals(fder));
 	}
 
 	@Test
 	public void Simplify(){
-		Function f = Sum.of(Const.of(2));
+		Function f = Sum.of(Multiplication.of(Const.ZERO),Multiplication.of(Const.ZERO));
 		Function res = Const.ZERO;
 		assertTrue(f.derivative().equals(res));
 	}
@@ -63,13 +63,13 @@ public class SumTest {
 	public void StringSimple(){
 		final NumberFormat nf = NumberFormat.getInstance();
 		Function f = Sum.of(Const.of(1),X.x());
-		assertTrue(f.toPrettyString(nf).equals("(1+x)"));
+		assertTrue(f.toPrettyString(nf).equals("(x+1)"));
 	}
 
 	@Test
 	public void StringComplex(){
 		final NumberFormat nf = NumberFormat.getInstance();
 		Function f = Sum.of(X.x(),Exponential.of(X.x(), 2));
-		assertTrue(f.toPrettyString(nf).equals("(x+x^2)"));
+		assertTrue(f.toPrettyString(nf).equals("(x^2+x)"));
 	}
 }

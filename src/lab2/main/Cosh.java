@@ -8,11 +8,6 @@ public class Cosh extends Nested {
     public Cosh(Function InnerF) { 
     	super(InnerF);
     } 
-    @Override
-    public boolean equals(Function f) {
-    	Cosh f1 = (Cosh) f;
-        return (InnerF.equals(f1.InnerF));
-    }
     
     @Override 
     public double calculate(double x) { 

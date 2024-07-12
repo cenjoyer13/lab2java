@@ -8,11 +8,7 @@ public class Sinh extends Nested {
     public Sinh(Function InnerF) { 
     	super(InnerF);
     } 
-    @Override
-    public boolean equals(Function f) {
-    	Sinh f1 = (Sinh) f;
-        return (InnerF.equals(f1.InnerF));
-    }
+
     @Override 
     public double calculate(double x) { 
         return sinh(InnerF.calculate(x)); 

@@ -21,21 +21,41 @@ public class Exponential implements Function {
     	}
     	else return false;
     }
+    
+    public double getPower() {
+    	return power;
+    }
+    
+    public Function getInnerF() {
+    	return InnerF;
+    }
+    
     @Override 
     public double calculate(double x) { 
         return pow(InnerF.calculate(x),power); 
     } 
     @Override 
     public Function derivative() { 
-    	if (power - 1 == 1) return Multiplication.of(Const.of(power), InnerF, InnerF.derivative());
-    	if (power - 1 == 0) return InnerF.derivative();
     	return Multiplication.of(Const.of(power), Exponential.of(InnerF, power-1), InnerF.derivative());
     } 
     @Override 
     public String toPrettyString(NumberFormat nf) {
         return String.format("%s^%s", InnerF.toPrettyString(nf), nf.format(power)); 
-    } 
-    public static Exponential of(Function InnerF, double power) { 
-        return new Exponential(InnerF, power); 
+    }
+    
+    public static Function of(Function InnerF, double power) {
+        if (power == 1) return InnerF;
+        else {
+        	if (InnerF.getClass() == Const.class) {
+        		return new Const(Math.pow(InnerF.calculate(0),power));
+        	}
+        	else if (InnerF.getClass() == Exponential.class)
+        	{
+        		Exponential temp = (Exponential) InnerF;
+        		return new Exponential(temp.getInnerF(), temp.getPower() * power);
+        	}
+        	return new Exponential(InnerF, power);
+        }
+        
     } 
 }

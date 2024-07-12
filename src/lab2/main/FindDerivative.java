@@ -20,6 +20,13 @@ public class FindDerivative {
 
 		final NumberFormat nf = NumberFormat.getInstance();
 		
+		Function f1 = Multiplication.of(X.x(), Exponential.of(X.x(), 2));
+		
+		System.out.format("ftest:").println(); 
+		System.out.format("ftest(x) = %s", 
+		        f1.toPrettyString(nf)
+		).println(); 
+		
 		System.out.format("f1:").println(); 
 		System.out.format("f1(x) = %s", 
 		        expression1.toPrettyString(nf)
@@ -47,15 +54,6 @@ public class FindDerivative {
 		System.out.format("f2'(%f) = %f", x, 
 		        expression2.derivative().calculate(x) 
 		).println();
-		
-		Function f1 = Exponential.of(X.x(), 2);
-		System.out.format("f2'= %s", f1.equals(Exponential.of(X.x(), 2))
-		).println();
-		
-		Function test = Sum.of(Const.of(1),X.x());
-		System.out.format("f1(x) = %s", 
-		        test.toPrettyString(nf)
-		).println(); 
 	}
 
 }

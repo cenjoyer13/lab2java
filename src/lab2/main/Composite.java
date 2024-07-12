@@ -44,5 +44,11 @@ public abstract class Composite implements Function {
     } 
     public Composite(ArrayList<Function> terms) { 
         this.terms = terms; 
+    }
+    public Composite(Composite template) { 
+        terms = new ArrayList<>();
+        for (Function f : template.terms()) {
+        	terms.add(f);
+        }
     } 
 } 

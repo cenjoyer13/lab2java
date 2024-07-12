@@ -41,28 +41,14 @@ public class MultiplicationTest {
 	@Test
 	public void DeriviateSimple(){
 		Function f = Multiplication.of(Const.of(1),X.x());
-		Function fder = Sum.of(Multiplication.of(Const.of(1),Const.of(1)));
+		Function fder = Const.of(1);
 		assertTrue(f.derivative().equals(fder));
 	}
 
 	@Test
 	public void DeriviateComplex(){
 		Function f = Multiplication.of(X.x(),Exponential.of(X.x(), 2));
-		Function fder = Sum.of(
-
-				Multiplication.of(
-						Multiplication.of(
-								Const.of(2),
-								X.x(),
-								Const.of(1)
-								)
-						,
-						X.x()),
-
-				Multiplication.of
-						(Exponential.of(X.x(), 2)
-								,
-						Const.of(1)));
+		Function fder = Multiplication.of(Const.of(3), Exponential.of(X.x(), 2));;
 		assertTrue(f.derivative().equals(fder));
 	}
 	
@@ -77,14 +63,21 @@ public class MultiplicationTest {
 	public void StringSimple(){
 		final NumberFormat nf = NumberFormat.getInstance();
 		Function f = Multiplication.of(Const.of(1),X.x());
-		assertTrue(f.toPrettyString(nf).equals("(1*x)"));
+		assertTrue(f.toPrettyString(nf).equals("x"));
 	}
 
 	@Test
 	public void StringComplex(){
 		final NumberFormat nf = NumberFormat.getInstance();
 		Function f = Multiplication.of(X.x(),Exponential.of(X.x(), 2));
-		assertTrue(f.toPrettyString(nf).equals("(x*x^2)"));
+		assertTrue(f.toPrettyString(nf).equals("x^3"));
+	}
+	
+	@Test
+	public void simplifyConst(){
+		Function f1 = Multiplication.of(Const.of(2), Const.of(2), X.x(), Exponential.of(X.x(), 2));
+		Function f2 = Multiplication.of(Const.of(4),Exponential.of(X.x(), 3));
+		assertTrue(f1.equals(f2));
 	}
 
 }
